@@ -44,7 +44,6 @@ jobs:
           chmod +x /usr/bin/movie-maker
           /usr/bin/movie-maker
           ls -ltah
-        ls # ffmpeg -i input.avi output.mkv
       - name: Upload assets
         uses: actions/upload-artifact@v2
         with:
