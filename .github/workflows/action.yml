@@ -39,4 +39,9 @@ jobs:
           # errors especially on GitHub-hosted macos machines.
           token: ${{ secrets.GITHUB_TOKEN }}
         id: setup-ffmpeg
-      - run: ffmpeg -i input.avi output.mkv
+      - run: ls # ffmpeg -i input.avi output.mkv
+      - name: Upload assets
+        uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          path: dist/*
