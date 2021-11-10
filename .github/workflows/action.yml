@@ -39,7 +39,10 @@ jobs:
           # errors especially on GitHub-hosted macos machines.
           token: ${{ secrets.GITHUB_TOKEN }}
         id: setup-ffmpeg
-      - run: |
+      - name: Build
+        env:
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+        run: |
           sudo mv dist/movie-maker_linux_amd64/movie-maker /usr/bin/movie-maker
           sudo chmod +x /usr/bin/movie-maker
           mkdir -p frames
