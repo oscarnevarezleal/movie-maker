@@ -45,7 +45,7 @@ jobs:
           mkdir -p frames
           /usr/bin/movie-maker
           ls -ltah frames
-          ffmpeg -r 1/5 -i frames/seq-%d.png -c:v libx264 -vf fps=24 -pix_fmt yuv420p dist/out.mp4
+          ffmpeg -r 1/5 -i frames/seq-%d.png -c:v libx264 -vf fps=1 -pix_fmt yuv420p dist/out.mp4
       - name: Upload assets
         uses: actions/upload-artifact@v2
         with:
