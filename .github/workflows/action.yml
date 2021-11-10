@@ -42,6 +42,7 @@ jobs:
       - run: |
           sudo mv dist/movie-maker_linux_amd64/movie-maker /usr/bin/movie-maker
           sudo chmod +x /usr/bin/movie-maker
+          mkdir -p frames
           /usr/bin/movie-maker
           ls -ltah frames
           ffmpeg -r 1/5 -i frames/seq-%d.png-c:v libx264 -vf fps=24 -pix_fmt yuv420p dist/out.mp4
