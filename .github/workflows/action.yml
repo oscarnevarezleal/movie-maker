@@ -32,7 +32,7 @@ jobs:
           # either 'goreleaser' (default) or 'goreleaser-pro'
           distribution: goreleaser
           version: latest
-          args: build
+          args: build --snapshot
       - uses: FedericoCarboni/setup-ffmpeg@v1
         with:
           # Not strictly necessary, but it may prevent rate limit
