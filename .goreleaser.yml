@@ -2,19 +2,16 @@ before:
   hooks:
     - go mod download
 builds:
-- env:
-    - CGO_ENABLED=0
-  skip: true
-  goos:
-    - darwin
-    - linux
-    - windows
-  goarch:
-    - amd64
+  - env:
+      - CGO_ENABLED=0
+    skip: true
+    goos:
+      - darwin
+      - linux
+      - windows
+    goarch:
+      - amd64
 archives:
-- format_overrides:
-    - goos: windows
-      format: zip
-release:
-  github:
-  prerelease: auto
+  - format_overrides:
+      - goos: windows
+        format: zip
