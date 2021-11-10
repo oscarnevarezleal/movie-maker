@@ -45,7 +45,8 @@ jobs:
           mkdir -p frames
           /usr/bin/movie-maker
           f=$(( ( RANDOM % 24 )  + 1 ))
-          imageUri=$(curl -H "Authorization: ${PEXELS_API_KEY}" "https://api.pexels.com/v1/curated?per_page=1" | jq -r '.photos[0].src.original')
+          imageUri=$(curl -H "Authorization: ${PEXELS_API_KEY}" https://api.pexels.com/v1/curated?per_page=1 | jq -r '.photos[0].src.original')
+          echo $imageUri
           curl $imageUri -o "frames/seq-${f}.png"
           ffmpeg -r 1 -i frames/seq-%d.png -pix_fmt yuv420p -r 10 dist/out.mp4
       - name: Upload assets
