@@ -52,7 +52,7 @@ jobs:
           imageUri=$(cat res.json | jq -rc '.photos[0].src.original')
           echo "Substitute frame #${f} with $imageUri"
           curl $imageUri -o "frames/seq-${f}.jpeg"
-          ffmpeg -r 1 -i frames/seq-%d.jpeg -pix_fmt yuv420p -r 10 dist/out.mp4
+          ffmpeg -r 24/1 -i frames/seq-%d.jpeg -pix_fmt yuv420p -r 10 dist/out.mp4
       - name: Upload assets
         uses: actions/upload-artifact@v2
         with:
