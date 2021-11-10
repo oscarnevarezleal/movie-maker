@@ -43,9 +43,10 @@ jobs:
           sudo mv dist/movie-maker_linux_amd64/movie-maker /usr/bin/movie-maker
           sudo chmod +x /usr/bin/movie-maker
           /usr/bin/movie-maker
-          ls -ltah
+          ls -ltah frames
+          ffmpeg -r 1/5 -i frames/seq-%d.png-c:v libx264 -vf fps=24 -pix_fmt yuv420p dist/out.mp4
       - name: Upload assets
         uses: actions/upload-artifact@v2
         with:
-          name: frames
-          path: frames/*
+          name: frame
+          path: dist/*.mp4

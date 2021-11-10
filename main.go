@@ -2,12 +2,13 @@ package main
 
 import (
 	"fmt"
-	"github.com/jdxyw/generativeart"
-	"github.com/jdxyw/generativeart/arts"
-	"github.com/jdxyw/generativeart/common"
 	"image/color"
 	"math/rand"
 	"time"
+
+	"github.com/jdxyw/generativeart"
+	"github.com/jdxyw/generativeart/arts"
+	"github.com/jdxyw/generativeart/common"
 )
 
 func main() {
@@ -26,7 +27,10 @@ func main() {
 		c.FillBackground()
 		c.SetColorSchema(colors)
 		c.Draw(arts.NewDotsWave(i * 300 / frames))
-		c.ToPNG(fmt.Sprintf("./frames/dots-%d.png", i))
+		err := c.ToPNG(fmt.Sprintf("./frames/seq-%d.png", i))
+		if err != nil {
+			return
+		}
 	}
 
 }
