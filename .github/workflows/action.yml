@@ -40,8 +40,8 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
         id: setup-ffmpeg
       - run: |
-          mv dist/movie-maker_linux_amd64/movie-maker /usr/bin/movie-maker
-          chmod +x /usr/bin/movie-maker
+          sudo mv dist/movie-maker_linux_amd64/movie-maker /usr/bin/movie-maker
+          sudo chmod +x /usr/bin/movie-maker
           /usr/bin/movie-maker
           ls -ltah
       - name: Upload assets
