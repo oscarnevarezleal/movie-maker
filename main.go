@@ -27,7 +27,7 @@ func main() {
 		c.FillBackground()
 		c.SetColorSchema(colors)
 		c.Draw(arts.NewDotsWave(i * 300 / frames))
-		err := c.ToPNG(fmt.Sprintf("./frames/seq-%d.png", i))
+		err := c.ToJPEG(fmt.Sprintf("./frames/seq-%d.jpeg", i))
 		if err != nil {
 			return
 		}
