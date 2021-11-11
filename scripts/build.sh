@@ -1,11 +1,6 @@
 #!/usr/bin/env bash
 
 frames=24
-
-#sudo mv dist/movie-maker_linux_amd64/movie-maker /usr/bin/movie-maker
-#sudo chmod +x /usr/bin/movie-maker
-# /usr/bin/movie-maker
-
 mkdir -p frames
 
 # Grab some random data from dataset
@@ -29,18 +24,6 @@ done
 ls
 # shellcheck disable=SC2164
 popd
-
-# Pexel section
-# Get a random int
-#f=$(( ( RANDOM % $frames )  + 1 ))
-#curl -H "Authorization: ${PEXELS_API_KEY}" "https://api.pexels.com/v1/curated?per_page=1" > res.json
-#photographer=$(cat res.json | jq -rc '.photos[0].photographer')
-#photographerUrl=$(cat res.json | jq -rc '.photos[0].photographer_url')
-#imageUri=$(cat res.json | jq -rc '.photos[0].src.original')
-#mediumImageUri=$(cat res.json | jq -rc '.photos[0].src.medium')
-#
-#echo "Substitute frame #${f} with $imageUri"
-#curl $imageUri -o "frames/seq-${f}.jpeg"
 
 ffmpeg -framerate 3 -i frames/seq-%d.jpeg -r 8 -c:v libx264 -pix_fmt yuvj420p -vf "scale=640:-2" dist/out.mp4
 today=$(date +'%m-%d-%Y')

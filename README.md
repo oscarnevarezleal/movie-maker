@@ -9,8 +9,6 @@ This is a submission for the [2021 GitHub Actions Hackathon](https://dev.to/devt
 ## Actions used
 
 - actions/checkout@v2
-- actions/setup-go@v2
-- goreleaser/goreleaser-action@v2
 - actions/cache@v2
 - FedericoCarboni/setup-ffmpeg@v1
 - actions/upload-artifact@v2
@@ -19,6 +17,5 @@ This is a submission for the [2021 GitHub Actions Hackathon](https://dev.to/devt
 ## Tech
 
 - [FfMpeg](https://www.ffmpeg.org/)
-- [GoLang](https://golang.org/)
-- [generativeart](github.com/jdxyw/generativeart)
+- [Unsplash Dataset](https://github.com/unsplash/datasets)
 - [Github Actions](https://github.com/features/actions)
