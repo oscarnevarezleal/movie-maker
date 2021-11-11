@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 frames=24
-mkdir -p frames
+mkdir -p {frames,dist}
 
 # Grab some random data from dataset
 head -1 photos.tsv000 > random100.tsv
@@ -14,6 +14,8 @@ echo "randomUnsplash : $randomUnsplash"
 pushd frames || exit
 cat ../dataset.tsv | xargs -I % curl -L -O %
 ls
+
+# Rename as sequence
 a=1
 # shellcheck disable=SC2045
 for i in $(ls);do
