@@ -67,7 +67,8 @@ jobs:
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
         run: |
 
-          tsv-sample --static-seed --compatibility-mode -n 1000 photos.tsv000
+          shuf -n 100 photos.tsv000 > random100.tsv
+          tsv-pretty random100.tsv | head -n 5
 
           sudo mv dist/movie-maker_linux_amd64/movie-maker /usr/bin/movie-maker
           sudo chmod +x /usr/bin/movie-maker
