@@ -49,8 +49,8 @@ jobs:
         id: cache-unsplash
         uses: actions/cache@v2
         with:
-          path: dataset.zip
-          key: ${{ runner.os }}-dataset
+          path: photos.tsv000
+          key: ${{ runner.os }}-photos-dataset
 
       - name: Download Unsplash dataset
         if: steps.cache-unsplash.outputs.cache-hit != 'true'
