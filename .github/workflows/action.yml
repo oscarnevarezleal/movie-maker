@@ -58,7 +58,10 @@ jobs:
           curl $imageUri -o "frames/seq-${f}.jpeg"
           ffmpeg -framerate 3 -i frames/seq-%d.jpeg -r 8 -c:v libx264 -pix_fmt yuvj420p dist/out.mp4
           touch release.md
-          echo "![alt Image by $photographer]($imageUri \"Image by $photographer\")" >> release.md
+          today=$(date +'%m-%d-%Y')
+          echo "### $today 👨‍🎤 " >> release.md
+          echo "![alt Image by $photographer]($smallImageUri \"Image by $photographer\")" >> release.md
+          echo "> Image by ($photographer)[photographerUrl]" >> release.md
           echo "::set-output name=version::latest"
       - name: Upload assets
         uses: actions/upload-artifact@v2
