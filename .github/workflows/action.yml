@@ -61,7 +61,9 @@ jobs:
           touch release.md
           today=$(date +'%m-%d-%Y')
           echo "### $today 👨‍🎤 " >> release.md
+          echo "<p align=\"center\">" >> release.md
           echo "![alt Image by $photographer]($mediumImageUri \"Image by $photographer\")" >> release.md
+          echo "</p>" >> release.md
           echo "> Author: [$photographer]($photographerUrl)" >> release.md
           echo "::set-output name=version::latest"
       - name: Upload assets
