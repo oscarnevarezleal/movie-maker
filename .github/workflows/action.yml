@@ -76,8 +76,10 @@ jobs:
           tsv-select -H -f 3 random100.tsv | head -n 2 | tail -n 1 > dataset.tsv
           randomUnsplash=$(cat dataset.tsv)
           echo "randomUnsplash : $randomUnsplash"
+
           pushd frames
-          cat ../dataset.tsv | xargs -I % curl %
+          cat ../dataset.tsv | xargs -I % curl -L -O %
+          ls
           popd
 
           sudo mv dist/movie-maker_linux_amd64/movie-maker /usr/bin/movie-maker
