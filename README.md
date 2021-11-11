@@ -1,8 +1,10 @@
 # Movie maker
 
-This project uses GithubActions to assemble and release a random movie clip every hour or so.
+This project uses GithubActions to assemble a random movie clip every hour or so. Each of the frames is an image taken from the [Unsplash Dataset](https://github.com/unsplash/datasets).
 
-Each of the frames is a code-generated image. Featured image is fetched using [Pexel API](https://www.pexels.com/)
+The movie clip is available in the form of an artifact available in the [release section](https://github.com/oscarnevarezleal/movie-maker/releases).
+
+There is no release history.The artifacts are replaced every time the workflow runs. Making the movie clip unique.
 
 This is a submission for the [2021 GitHub Actions Hackathon](https://dev.to/devteam/join-us-for-the-2021-github-actions-hackathon-on-dev-4hn4) on [DEV](https://dev.to)
 

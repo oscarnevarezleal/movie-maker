@@ -52,8 +52,6 @@ jobs:
 
       - name: Build
         id: build
-        env:
-          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
         run: |
           chmod -R +x ./scripts/
           ./scripts/build.sh
