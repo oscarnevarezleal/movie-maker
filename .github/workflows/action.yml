@@ -44,7 +44,8 @@ jobs:
         run: |
           curl -L -O https://github.com/eBay/tsv-utils/releases/download/v2.2.1/tsv-utils-v2.2.1_osx-x86_64_ldc2.tar.gz
           tar -zxvf tsv-utils-v2.2.1_osx-x86_64_ldc2.tar.gz
-          sudo cp -R tsv-utils-v2.2.1_osx-x86_64_ldc2/bin/ /usr/bin
+          sudo chmod -R +x tsv-utils-v2.2.1_osx-x86_64_ldc2/bin
+          sudo mv -v tsv-utils-v2.2.1_osx-x86_64_ldc2/bin/* /usr/bin/
           ls
           ls /usr/bin
       - name: Cache Unsplash
