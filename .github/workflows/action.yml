@@ -53,11 +53,12 @@ jobs:
           photographer=$(cat res.json | jq -rc '.photos[0].photographer')
           photographerUrl=$(cat res.json | jq -rc '.photos[0].photographer_url')
           imageUri=$(cat res.json | jq -rc '.photos[0].src.original')
+          smallImageUri=$(cat res.json | jq -rc '.photos[0].src.small')
           echo "Substitute frame #${f} with $imageUri"
           curl $imageUri -o "frames/seq-${f}.jpeg"
           ffmpeg -framerate 3 -i frames/seq-%d.jpeg -r 8 -c:v libx264 -pix_fmt yuvj420p dist/out.mp4
           touch release.md
-          echo "![alt Image by $photographer]($imageUri \"Latest\")" >> release.md
+          echo "![alt Image by $photographer]($imageUri \"Image by $photographer\")" >> release.md
           echo "::set-output name=version::latest"
       - name: Upload assets
         uses: actions/upload-artifact@v2
