@@ -66,14 +66,20 @@ jobs:
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
         run: |
 
-          shuf -n 100 photos.tsv000 > random100.tsv
-          tsv-pretty random100.tsv | head -n 5
+          # Get a random image from dataset
+          f=$(( ( RANDOM % 24 )  + 1 ))
+          head -1 photos.tsv000 > random100.tsv
+          shuf -n 100 photos.tsv000 >> random100.tsv
+          tsv-pretty random100.tsv | head -n 5\
+          tsv-select -H -f 2 random100.tsv
+          randomUnsplash=$(head -n $f random100.tsv | tail -n 1)
+          echo $randomUnsplash
 
           sudo mv dist/movie-maker_linux_amd64/movie-maker /usr/bin/movie-maker
           sudo chmod +x /usr/bin/movie-maker
           mkdir -p frames
           /usr/bin/movie-maker
-          f=$(( ( RANDOM % 24 )  + 1 ))
+
           curl -H "Authorization: ${PEXELS_API_KEY}" "https://api.pexels.com/v1/curated?per_page=1" > res.json
           photographer=$(cat res.json | jq -rc '.photos[0].photographer')
           photographerUrl=$(cat res.json | jq -rc '.photos[0].photographer_url')
