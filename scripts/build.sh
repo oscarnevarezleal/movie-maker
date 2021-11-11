@@ -2,8 +2,8 @@
 
 frames=24
 
-sudo mv dist/movie-maker_linux_amd64/movie-maker /usr/bin/movie-maker
-sudo chmod +x /usr/bin/movie-maker
+#sudo mv dist/movie-maker_linux_amd64/movie-maker /usr/bin/movie-maker
+#sudo chmod +x /usr/bin/movie-maker
 # /usr/bin/movie-maker
 
 mkdir -p frames
@@ -41,7 +41,7 @@ mediumImageUri=$(cat res.json | jq -rc '.photos[0].src.medium')
 
 echo "Substitute frame #${f} with $imageUri"
 curl $imageUri -o "frames/seq-${f}.jpeg"
-ffmpeg -framerate 3 -i frames/seq-%d.jpeg -r 8 -c:v libx264 -pix_fmt yuvj420p dist/out.mp4
+ffmpeg -framerate 3 -i frames/seq-%d.jpeg -r 8 -c:v libx264 -pix_fmt yuvj420p -vf "scale=640:-2" dist/out.mp4
 touch release.md
 today=$(date +'%m-%d-%Y')
 
