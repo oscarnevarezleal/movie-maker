@@ -42,7 +42,7 @@ jobs:
       - name: Download Unsplash dataset
         run: |
           sudo apt-get install fastjar
-          curl https://unsplash.com/data/lite/latest -o dataset.zip
+          curl -L -O https://unsplash.com/data/lite/latest
           ls
           jar xvf dataset.zip
           ls
