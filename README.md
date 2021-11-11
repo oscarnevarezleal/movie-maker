@@ -11,6 +11,7 @@ This is a submission for the [2021 GitHub Actions Hackathon](https://dev.to/devt
 - actions/checkout@v2
 - actions/setup-go@v2
 - goreleaser/goreleaser-action@v2
+- actions/cache@v2
 - FedericoCarboni/setup-ffmpeg@v1
 - actions/upload-artifact@v2
 - ncipollo/release-action@v1
