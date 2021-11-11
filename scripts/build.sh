@@ -23,7 +23,8 @@ pushd frames || exit
 cat ../dataset.tsv | xargs -I % curl -L -O %
 ls
 a=1
-for i in .*; do
+# shellcheck disable=SC2045
+for i in $(ls);do
   new=$(printf "seq-%d.jpeg" "$a")
   mv -i -- "$i" "$new"
   let a=a+1
