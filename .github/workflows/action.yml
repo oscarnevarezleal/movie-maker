@@ -39,10 +39,18 @@ jobs:
           # errors especially on GitHub-hosted macos machines.
           token: ${{ secrets.GITHUB_TOKEN }}
         id: setup-ffmpeg
+      - name: Cache Unsplash
+        id: cache-unsplash
+        uses: actions/cache@v2
+        with:
+          path: dataset.zip
+          key: ${{ runner.os }}-dataxet
+
       - name: Download Unsplash dataset
+        if: steps.cache-unsplash.outputs.cache-hit != 'true'
         run: |
           sudo apt-get install fastjar
-          curl -L -O https://unsplash.com/data/lite/latest
+          curl -L -O https://unsplash.com/data/lite/latest -o dataset.zip
           ls
           jar xvf dataset.zip
           ls
