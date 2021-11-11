@@ -4,8 +4,7 @@ frames=24
 
 sudo mv dist/movie-maker_linux_amd64/movie-maker /usr/bin/movie-maker
 sudo chmod +x /usr/bin/movie-maker
-/usr/bin/movie-maker
-
+# /usr/bin/movie-maker
 
 mkdir -p frames
 
@@ -24,7 +23,7 @@ pushd frames || exit
 cat ../dataset.tsv | xargs -I % curl -L -O %
 ls
 a=1
-for i in *.jpg; do
+for i in *.*; do
   new=$(printf "%d.jpg" "$a")
   mv -i -- "$i" "$new"
   let a=a+1
