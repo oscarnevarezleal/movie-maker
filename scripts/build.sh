@@ -24,7 +24,7 @@ cat ../dataset.tsv | xargs -I % curl -L -O %
 ls
 a=1
 for i in *.*; do
-  new=$(printf "%d.jpg" "$a")
+  new=$(printf "seq-%d.jpeg" "$a")
   mv -i -- "$i" "$new"
   let a=a+1
 done
