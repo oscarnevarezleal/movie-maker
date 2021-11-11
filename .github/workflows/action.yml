@@ -42,10 +42,9 @@ jobs:
 
       - name: Install tsvUtils
         run: |
-          curl -L -O https://github.com/eBay/tsv-utils/releases/download/v2.2.1/tsv-utils-v2.2.1_osx-x86_64_ldc2.tar.gz
-          tar -zxvf tsv-utils-v2.2.1_osx-x86_64_ldc2.tar.gz
-          sudo chmod -R +x tsv-utils-v2.2.1_osx-x86_64_ldc2/bin
-          sudo mv -v tsv-utils-v2.2.1_osx-x86_64_ldc2/bin/* /usr/bin/
+          curl -L https://github.com/eBay/tsv-utils/releases/download/v2.1.2/tsv-utils-v2.1.2_linux-x86_64_ldc2.tar.gz | tar xz
+          sudo chmod -R +x tsv-utils-v2.1.2_linux-x86_64_ldc2/bin
+          sudo mv -v tsv-utils-v2.1.2_linux-x86_64_ldc2/bin/* /usr/bin/
 
       - name: Cache Unsplash
         id: cache-unsplash
