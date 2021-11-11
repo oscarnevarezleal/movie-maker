@@ -46,8 +46,7 @@ jobs:
           tar -zxvf tsv-utils-v2.2.1_osx-x86_64_ldc2.tar.gz
           sudo chmod -R +x tsv-utils-v2.2.1_osx-x86_64_ldc2/bin
           sudo mv -v tsv-utils-v2.2.1_osx-x86_64_ldc2/bin/* /usr/bin/
-          ls
-          ls /usr/bin
+
       - name: Cache Unsplash
         id: cache-unsplash
         uses: actions/cache@v2
@@ -67,6 +66,9 @@ jobs:
         env:
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
         run: |
+
+          tsv-sample --static-seed --compatibility-mode -n 1000 photos.tsv000
+
           sudo mv dist/movie-maker_linux_amd64/movie-maker /usr/bin/movie-maker
           sudo chmod +x /usr/bin/movie-maker
           mkdir -p frames
