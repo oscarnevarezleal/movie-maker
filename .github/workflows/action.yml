@@ -41,9 +41,10 @@ jobs:
         id: setup-ffmpeg
       - name: Download Unsplash dataset
         run: |
+          sudo apt-get install fastjar
           curl https://unsplash.com/data/lite/latest -o dataset.zip
           ls
-          unzip dataset.zip
+          jar xvf dataset.zip
           ls
       - name: Build
         id: build
