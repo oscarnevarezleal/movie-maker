@@ -1,5 +1,17 @@
 # Movie maker
 
+```shell
+# +---------------------------------+
+# |                                 |
+# +---------------------------------+
+# |                                 |
+# |             Action!             |
+# |                                 |
+# +---------------------------------+
+```
+
+## About
+
 This project uses GithubActions to assemble a random movie clip every hour or so. Each of the frames is an image taken from the [Unsplash Dataset](https://github.com/unsplash/datasets).
 
 The movie clip is available in the form of an artifact available in the [release section](https://github.com/oscarnevarezleal/movie-maker/releases).
