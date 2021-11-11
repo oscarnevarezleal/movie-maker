@@ -4,6 +4,9 @@ name: CI
 
 # Run every hour
 on:
+  push:
+    branches:
+      - feature/*
   schedule:
     - cron: 0 * * * *
 
