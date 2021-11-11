@@ -8,6 +8,8 @@ This is a submission for the [2021 GitHub Actions Hackathon](https://dev.to/devt
 
 ## Actions used
 
+- actions/checkout@v2
+- actions/setup-go@v2
 - goreleaser/goreleaser-action@v2
 - FedericoCarboni/setup-ffmpeg@v1
 - actions/upload-artifact@v2
