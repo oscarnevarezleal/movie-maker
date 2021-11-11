@@ -57,8 +57,7 @@ jobs:
         run: |
           sudo apt-get install fastjar
           curl -L -O https://unsplash.com/data/lite/latest
-          mv latest dataset.zip
-          jar xvf dataset
+          jar xvf latest
 
       - name: Build
         id: build
