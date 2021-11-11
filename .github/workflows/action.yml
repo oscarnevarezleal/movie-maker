@@ -62,7 +62,7 @@ jobs:
           today=$(date +'%m-%d-%Y')
           echo "### $today 👨‍🎤 " >> release.md
           echo "![alt Image by $photographer]($mediumImageUri \"Image by $photographer\")" >> release.md
-          echo "> Author: ($photographer)[$photographerUrl]" >> release.md
+          echo "> Author: [$photographer]($photographerUrl)" >> release.md
           echo "::set-output name=version::latest"
       - name: Upload assets
         uses: actions/upload-artifact@v2
