@@ -44,7 +44,7 @@ popd
 
 ffmpeg -framerate 3 -i frames/seq-%d.jpeg -r 8 -c:v libx264 -pix_fmt yuvj420p -vf "scale=640:-2" dist/out.mp4
 today=$(date +'%m-%d-%Y')
-time=$(date +'%h-%i-%s')
+time=$(date +'%H:%M')
 
 touch release.md
 # shellcheck disable=SC2129
