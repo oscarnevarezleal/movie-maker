@@ -36,6 +36,11 @@ jobs:
           # errors especially on GitHub-hosted macos machines.
           token: ${{ secrets.GITHUB_TOKEN }}
         id: setup-ffmpeg
+      - name: Download Unsplash dataset
+        run: |
+          curl https://unsplash.com/data/lite/latest -o dataset.zip
+          unzip dataset
+          ls
       - name: Build
         id: build
         env:
