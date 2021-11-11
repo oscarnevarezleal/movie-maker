@@ -42,14 +42,14 @@ popd
 #echo "Substitute frame #${f} with $imageUri"
 #curl $imageUri -o "frames/seq-${f}.jpeg"
 
-ffmpeg -framerate 3 -i frames/seq-%d.jpeg -r 8 -c:v libx264 -pix_fmt yuvj420p -vf "scale=640:-1" dist/out.mp4
+ffmpeg -framerate 3 -i frames/seq-%d.jpeg -r 8 -c:v libx264 -pix_fmt yuvj420p -vf "scale=640:-2" dist/out.mp4
 today=$(date +'%m-%d-%Y')
 time=$(date +'%h-%i-%s')
 
 touch release.md
 # shellcheck disable=SC2129
 echo "### $today 👨‍🎤 " >> release.md
-echo "> Last updated: ${time}" >> release.md
+echo "> Generated at: ${time}" >> release.md
 echo "> Images provided by [The Unsplash Dataset](https://github.com/unsplash/datasets)" >> release.md
 
 echo "::set-output name=version::latest"
