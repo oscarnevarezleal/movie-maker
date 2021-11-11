@@ -39,21 +39,27 @@ jobs:
           # errors especially on GitHub-hosted macos machines.
           token: ${{ secrets.GITHUB_TOKEN }}
         id: setup-ffmpeg
+
+      - name: Install tsvUtils
+        run:|
+          curl -L -O https://github.com/eBay/tsv-utils/releases/download/v2.2.1/tsv-utils-v2.2.1_osx-x86_64_ldc2.tar.gz
+          tar -zxvf tsv-utils-v2.2.1_osx-x86_64_ldc2.tar.gz
+          ls
       - name: Cache Unsplash
         id: cache-unsplash
         uses: actions/cache@v2
         with:
           path: dataset.zip
-          key: ${{ runner.os }}-dataxet
+          key: ${{ runner.os }}-dataset
 
       - name: Download Unsplash dataset
         if: steps.cache-unsplash.outputs.cache-hit != 'true'
         run: |
           sudo apt-get install fastjar
           curl -L -O https://unsplash.com/data/lite/latest
-          ls
-          jar xvf latest
-          ls
+          mv latest dataset.zip
+          jar xvf dataset
+
       - name: Build
         id: build
         env:
