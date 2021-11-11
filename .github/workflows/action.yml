@@ -41,7 +41,7 @@ jobs:
         id: setup-ffmpeg
 
       - name: Install tsvUtils
-        run:|
+        run: |
           curl -L -O https://github.com/eBay/tsv-utils/releases/download/v2.2.1/tsv-utils-v2.2.1_osx-x86_64_ldc2.tar.gz
           tar -zxvf tsv-utils-v2.2.1_osx-x86_64_ldc2.tar.gz
           ls
