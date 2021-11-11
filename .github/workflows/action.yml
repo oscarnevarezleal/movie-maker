@@ -70,10 +70,10 @@ jobs:
           f=$(( ( RANDOM % 24 )  + 1 ))
           head -1 photos.tsv000 > random100.tsv
           shuf -n 100 photos.tsv000 >> random100.tsv
-          tsv-pretty random100.tsv | head -n 5
-          tsv-select -H -f 2 random100.tsv
+          # tsv-pretty random100.tsv | head -n 5
+          # tsv-select -H -f 2 random100.tsv
           randomUnsplash=$(head -n $f random100.tsv | tail -n 1)
-          echo $randomUnsplash
+          echo "randomUnsplash : $randomUnsplash"
 
           sudo mv dist/movie-maker_linux_amd64/movie-maker /usr/bin/movie-maker
           sudo chmod +x /usr/bin/movie-maker
