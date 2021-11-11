@@ -42,6 +42,7 @@ jobs:
       - name: Download Unsplash dataset
         run: |
           curl https://unsplash.com/data/lite/latest -o dataset.zip
+          mv unsplash-research-dataset-lite-latest.zip dataset.zip
           unzip dataset
           ls
       - name: Build
