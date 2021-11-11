@@ -8,9 +8,6 @@ frames=24
 
 mkdir -p frames
 
-# Get a random int
-f=$(( ( RANDOM % $frames )  + 1 ))
-
 # Grab some random data from dataset
 head -1 photos.tsv000 > random100.tsv
 shuf -n 100 photos.tsv000 >> random100.tsv
@@ -33,19 +30,23 @@ ls
 # shellcheck disable=SC2164
 popd
 
-curl -H "Authorization: ${PEXELS_API_KEY}" "https://api.pexels.com/v1/curated?per_page=1" > res.json
-photographer=$(cat res.json | jq -rc '.photos[0].photographer')
-photographerUrl=$(cat res.json | jq -rc '.photos[0].photographer_url')
-imageUri=$(cat res.json | jq -rc '.photos[0].src.original')
-mediumImageUri=$(cat res.json | jq -rc '.photos[0].src.medium')
+# Pexel section
+# Get a random int
+#f=$(( ( RANDOM % $frames )  + 1 ))
+#curl -H "Authorization: ${PEXELS_API_KEY}" "https://api.pexels.com/v1/curated?per_page=1" > res.json
+#photographer=$(cat res.json | jq -rc '.photos[0].photographer')
+#photographerUrl=$(cat res.json | jq -rc '.photos[0].photographer_url')
+#imageUri=$(cat res.json | jq -rc '.photos[0].src.original')
+#mediumImageUri=$(cat res.json | jq -rc '.photos[0].src.medium')
+#
+#echo "Substitute frame #${f} with $imageUri"
+#curl $imageUri -o "frames/seq-${f}.jpeg"
 
-echo "Substitute frame #${f} with $imageUri"
-curl $imageUri -o "frames/seq-${f}.jpeg"
-ffmpeg -framerate 3 -i frames/seq-%d.jpeg -r 8 -c:v libx264 -pix_fmt yuvj420p -vf "scale=640:-2" dist/out.mp4
-touch release.md
+ffmpeg -framerate 3 -i frames/seq-%d.jpeg -r 8 -c:v libx264 -pix_fmt yuvj420p -vf "scale=640:-1" dist/out.mp4
 today=$(date +'%m-%d-%Y')
 
+touch release.md
+# shellcheck disable=SC2129
 echo "### $today 👨‍🎤 " >> release.md
-echo "![alt Image by $photographer]($mediumImageUri \"Image by $photographer\")" >> release.md
-echo "> Author: [$photographer]($photographerUrl)" >> release.md
+echo "> Images provided by [The Unsplash Dataset](https://github.com/unsplash/datasets)" >> release.md
 echo "::set-output name=version::latest"

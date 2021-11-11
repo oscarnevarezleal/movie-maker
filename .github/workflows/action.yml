@@ -73,6 +73,7 @@ jobs:
         with:
           name: frame
           path: dist/*.mp4
+
       - uses: ncipollo/release-action@v1
         id: xrelease
         with:
